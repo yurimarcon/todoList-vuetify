@@ -58,17 +58,8 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+      <Search />
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
     </v-app-bar>
     <v-main>
         <router-view></router-view>
@@ -80,6 +71,7 @@
 <script>
   export default {
     components:{
+      'Search' : require('@/components/Tools/Search.vue').default,
       'SnackBar' : require('@/components/Shared/SnackBar.vue').default
     },
     data: () => ({ 

@@ -11,6 +11,7 @@
         <v-card-text>
           New title
           <v-text-field 
+          class="bg-color-input"
           v-model="newTitle"
           @keyup.enter="$store.dispatch('updateTask', {id:task.id, newTitle}) & $emit('close')"
           />      
@@ -43,12 +44,17 @@ export default {
     props:['task'],
     data(){
       return{
-        newTitle:''
+        newTitle:this.task.title
       }
     },
 }
 </script>
 
 <style>
-
+  .bg-color-input{
+    background-color:rgba(30, 143, 255, 0.089);
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 20px;
+  }
 </style>

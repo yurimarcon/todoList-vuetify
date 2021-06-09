@@ -22,7 +22,7 @@
             <v-list-item-action>
                 <v-list-item-action-text>
                     <v-icon small> mdi-calendar </v-icon>
-                    {{dataAtualFormatada()}}
+                    {{task.date | dataAtualFormatada}}
                 </v-list-item-action-text>
             </v-list-item-action>
             <TaskMenu
@@ -41,10 +41,10 @@ export default {
     components:{
         'TaskMenu': require('@/components/Todo/TaskMenu.vue').default
     },
-    methods:{
-        dataAtualFormatada(){
-            var data = new Date(this.task.date),
-            dia  = data.getDate().toString(),
+    filters:{
+        dataAtualFormatada(value){
+            var data = new Date(new Date(value).getTime() + 1000 * 60 * 60 * 24 * 1),
+            dia  = data.getDate(new Date()).toString(),
             diaF = (dia.length == 1) ? '0'+dia : dia,
             mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
             mesF = (mes.length == 1) ? '0'+mes : mes,

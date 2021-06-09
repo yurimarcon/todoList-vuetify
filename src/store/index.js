@@ -54,6 +54,10 @@ export default new Vuex.Store({
     deleteTask(state, id){
       state.tasks = state.tasks.filter(hit => hit.id !== id)
     },
+    setDateTask(state, taskInput){
+      let taskMod = state.tasks.filter(hit => hit.id === taskInput.id)[0]
+      taskMod.date = taskInput.date.toLocaleString()
+    },
     showSnackBar(state, text){
       let timeout = 0
       if(state.SnackBar.show){
