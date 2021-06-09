@@ -32,6 +32,11 @@
     :task="task" 
     @close="dialog.delete = false"
     />
+    <DialogEdit 
+    v-if="dialog.edit"
+    :task="task" 
+    @close="dialog.edit = false"
+    />
 </div>
 </template>
 
@@ -40,18 +45,21 @@ export default {
     name: 'TaskMenu',
     props:['task'],
     components:{
-        'DialogDelete': require('@/components/Todo/Dialogs/DialogDelete.vue').default
+        'DialogEdit': require('@/components/Todo/Dialogs/DialogEdit.vue').default,
+        'DialogDelete': require('@/components/Todo/Dialogs/DialogDelete.vue').default,
     },
     data: () => ({
         dialog : {
-            delete : false
+            edit : false,
+            delete : false,
         },
         items: [
         { 
             title: 'Editar',
             icon: 'mdi-pencil',
             click(){
-                console.log('edit')
+                console.log(this.dialog.delete)
+                this.dialog.edit = true
             }
         },
         { 

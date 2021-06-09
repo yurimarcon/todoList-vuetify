@@ -19,14 +19,12 @@
                     {{task.title}}
                 </v-list-item-title>
             </v-list-item-content>
-            <!-- <v-list-item-action
-            @click="dialog.delete = true"
-            icon
-            >
-                <v-btn icon>
-                    <v-icon color="primary">mdi-trash-can-outline</v-icon>
-                </v-btn>
-            </v-list-item-action> -->
+            <v-list-item-action>
+                <v-list-item-action-text>
+                    <v-icon small> mdi-calendar </v-icon>
+                    {{dataAtualFormatada()}}
+                </v-list-item-action-text>
+            </v-list-item-action>
             <TaskMenu
             :task="task"
             />
@@ -43,6 +41,17 @@ export default {
     components:{
         'TaskMenu': require('@/components/Todo/TaskMenu.vue').default
     },
+    methods:{
+        dataAtualFormatada(){
+            var data = new Date(this.task.date),
+            dia  = data.getDate().toString(),
+            diaF = (dia.length == 1) ? '0'+dia : dia,
+            mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+            mesF = (mes.length == 1) ? '0'+mes : mes,
+            anoF = data.getFullYear();
+            return diaF+"/"+mesF+"/"+anoF;
+        }
+    }
 }
 </script>
 

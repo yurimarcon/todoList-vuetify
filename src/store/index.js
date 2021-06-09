@@ -9,17 +9,20 @@ export default new Vuex.Store({
       {
         id:'1',
         title: "wake up",
-        done: false
+        done: false,
+        date: '2021-06-08'
       },
       {
         id:'2',
         title: "Get Bannanas",
-        done: false
+        done: false,
+        date: '2021-06-08'
       },
       {
         id:'3',
         title: "Eat bannanas",
-        done: false
+        done: false,
+        date: '2021-06-08'
       },
     ],
     SnackBar:{
@@ -37,6 +40,12 @@ export default new Vuex.Store({
           done:false
         }
       )
+    },
+    updateTask(state, taskInput){
+      if(!taskInput.newTitle)return
+      let taskMod = state.tasks.filter(hit => hit.id === taskInput.id)[0]
+      console.log(taskMod)
+      taskMod.title = taskInput.newTitle
     },
     doneTask(state, id){
       let done = state.tasks.filter(hit => hit.id === id)[0]
@@ -63,8 +72,14 @@ export default new Vuex.Store({
   },
   actions: {
     addTask({commit}, newTaskTitle){
+      if(!newTaskTitle)return
       commit('addTask', newTaskTitle)
       commit('showSnackBar', 'Task added!')
+    },
+    updateTask({commit}, task){
+      console.log(task)
+      commit('updateTask', task)
+      commit('showSnackBar', 'Task updated!')
     },
     deleteTask({commit}, id){
       commit('deleteTask', id)
