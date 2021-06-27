@@ -6,13 +6,25 @@
     >
         <template v-slot:activator="{ on, attrs }">
             <v-btn
+            v-if="!$store.state.sorting"
             icon
+            color = primary
             v-bind="attrs"
             v-on="on"
             >
-            <v-icon>mdi-dots-vertical</v-icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+            
+            <v-btn
+            v-else
+            icon
+            color = primary
+            class="handle"
+            >
+                <v-icon>mdi-drag-horizontal-variant</v-icon>
             </v-btn>
         </template>
+        
 
         <v-list>
             <v-list-item
@@ -82,13 +94,20 @@ export default {
                 this.dialog.delete = true
             }
         },
+        { 
+            title: 'Mover',
+            icon: 'mdi-drag-horizontal-variant',
+            click(){
+                this.$store.commit('sortTask')
+            }
+        },
       ],
     }),
     methods:{
         handleClick(index){
             this.items[index].click.call(this)
         }
-    }
+    },
 }
 </script>
 

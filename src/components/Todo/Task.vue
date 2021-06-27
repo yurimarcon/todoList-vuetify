@@ -1,8 +1,10 @@
 <template>
 <div>
     <v-list-item
-        @click="$store.commit('doneTask', task.id)"
+        @click="$store.dispatch('doneTask', task.id)"
         :class="{'blue lighten-5' : task.done }"
+        class="white"
+        :ripple="false"
         >
         <template v-slot:default>
             <v-list-item-action>
@@ -43,6 +45,7 @@ export default {
     },
     filters:{
         dataAtualFormatada(value){
+            // if(!value)value = new Date
             var data = new Date(new Date(value).getTime() + 1000 * 60 * 60 * 24 * 1),
             dia  = data.getDate(new Date()).toString(),
             diaF = (dia.length == 1) ? '0'+dia : dia,
@@ -56,5 +59,12 @@ export default {
 </script>
 
 <style>
-
+.sortable-ghost{
+    opacity: 0;
+    box-shadow: 10px 5px 5px red !important;
+}
+.sortable-chosen{
+    
+    box-shadow: 5px 10px #888888;
+}
 </style>

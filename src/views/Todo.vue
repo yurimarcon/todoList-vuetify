@@ -1,6 +1,5 @@
 <template>
 <div class="Home">
-  <InputTask />
   <div
     v-if="$store.state.tasks.length"
   >
@@ -13,6 +12,11 @@
   >
     <NoTasks />
   </div>
+  <div>
+    <BtnDrag 
+    v-if="$store.state.sorting"
+    />
+  </div>
 </div>
 </template>
 
@@ -22,13 +26,13 @@
   export default {
     name: 'Todo',
     components: {
-      'InputTask' : require('@/components/Todo/InputTask.vue').default,
       'ListTasks' : require('@/components/Todo/ListTasks.vue').default,
-      'NoTasks' : require('@/components/Todo/NoTasks.vue').default
+      'NoTasks' : require('@/components/Todo/NoTasks.vue').default,
+      'BtnDrag' : require('@/components/Todo/Dialogs/BtnDrag.vue').default
     },   
   }
 </script>
 
-<style>
+<style scoped>
 
 </style>

@@ -21,7 +21,7 @@
           <v-btn
             text
             color="primary"
-            @click="$store.commit('setDateTask', {id:task.id, date}) & $emit('close')"
+            @click="$store.dispatch('setDateTask', {id:task.id, date}) & $emit('close')"
           >
             OK
           </v-btn>
@@ -38,9 +38,11 @@ export default {
         }
     },
     mounted(){
-        if(this.task.date){
-            this.date = this.task.date
-        }
+        console.log(this.task);
+      if(this.task.date){
+        let date = this.task.date.getFullYear() + '-' + (this.task.date.getMonth()+1) + '-' +this.task.date.getDate();
+        this.date = date
+      }
 
     }
 

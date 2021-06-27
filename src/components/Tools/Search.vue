@@ -1,10 +1,11 @@
 <template>
   <v-text-field
     class="expanding-search mt-1"
-    :class="{close: !showSearch}"
+    :class="{close: !showSearch && !$store.state.search}"
     @focus="showSearch = !showSearch"
     @blur="hiddeSearch()"
-    v-model="textSearch"
+    :value="$store.state.search"
+    @input="$store.commit('search', $event)"
     placeholder="Search"
     prepend-inner-icon="mdi-magnify"
     filled
