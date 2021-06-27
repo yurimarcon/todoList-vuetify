@@ -18,7 +18,7 @@ export default {
 <style>
 #btnDrag{
     position: fixed;
-    bottom: 40px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
   
