@@ -69,7 +69,7 @@ export default new Vuex.Store({
         id:Date.now(),
         title: newTaskTitle,
         done:false,
-        date: new Date()
+        date: null
       }
       db.collection('tasks').add(task).then(()=>{
         commit('addTask', task)

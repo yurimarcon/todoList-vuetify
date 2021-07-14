@@ -22,7 +22,9 @@
                 </v-list-item-title>
             </v-list-item-content>
             <v-list-item-action>
-                <v-list-item-action-text>
+                <v-list-item-action-text
+                  v-if="task.date"
+                >
                     <v-icon small> mdi-calendar </v-icon>
                     {{task.date | dataAtualFormatada}}
                 </v-list-item-action-text>
