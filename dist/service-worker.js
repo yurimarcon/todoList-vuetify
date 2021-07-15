@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.77ac9867f4a9037ee4c6fabf7e9bfbf3.js"
+  "/precache-manifest.813e21229f4b4a719f4903ff5b78ca36.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "Todo-Vue"});
+workbox.core.setCacheNameDetails({prefix: "vue-todo"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
